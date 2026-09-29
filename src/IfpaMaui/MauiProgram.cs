@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui;
 using Flurl.Http;
 using CommunityToolkit.Maui.ApplicationModel;
 using Ifpa.BackgroundJobs;
@@ -49,8 +49,9 @@ public static class MauiProgram
 #endif
         var builder = MauiApp.CreateBuilder();
 
-        // pull in appsettings.json
+        // pull in appsettings.json, then overlay appsettings.local.json if present (gitignored, per-developer overrides)
         builder.Configuration.AddJsonPlatformBundle();
+        builder.Configuration.AddJsonPlatformBundle("local", optional: true);
         var appSettings = builder.Configuration.GetRequiredSection(nameof(AppSettings)).Get<AppSettings>() ?? new AppSettings();
         builder.Services.AddSingleton(appSettings);
 

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net10.0-android;net10.0-ios</TargetFrameworks>
         <OutputType>Exe</OutputType>
@@ -141,6 +141,7 @@
     <!-- Compile Directives / File Compile Types -->
     <ItemGroup>
         <None Remove="appsettings.json" />
+        <None Remove="appsettings.local.json" />
         <None Remove="Platforms\Android\Resources\drawable\noplayerpic.png" />
         <None Remove="Platforms\Android\Resources\drawable\profile_rounded.xml" />
         <None Remove="Platforms\Android\Resources\xml\file_paths.xml" />
@@ -148,6 +149,7 @@
 
     <ItemGroup>
         <MauiAsset Include="appsettings.json" />
+        <MauiAsset Include="appsettings.local.json" Condition="Exists('appsettings.local.json')" />
     </ItemGroup>
 
     <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">

@@ -364,3 +364,6 @@ FodyWeavers.xsd
 
 # why does MacOS do this?
 .DS_Store
+
+# Per-developer local settings override (never commit)
+appsettings.local.json
