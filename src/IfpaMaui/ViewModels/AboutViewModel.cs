@@ -4,11 +4,6 @@ using Ifpa.Models;
 using Microsoft.Extensions.Logging;
 using PinballApi.Interfaces;
 using PinballApi.Models.WPPR.Universal.Players;
-using System.IO;
-using System.Linq;
-using System.Collections.Generic;
-using System;
-using Microsoft.Maui.Controls;
 
 namespace Ifpa.ViewModels
 {
@@ -73,7 +68,7 @@ namespace Ifpa.ViewModels
             }
             else if (DeviceInfo.Current.Platform == DevicePlatform.Android)
             {
-                url = $"https://play.google.com/store/apps/details?id={AppSettings.PlayStoreAppId}";
+                url = $"https://play.google.com/store/apps/details?id={Android.App.Application.Context.PackageName}";
             }
 
             if (string.IsNullOrWhiteSpace(url))
